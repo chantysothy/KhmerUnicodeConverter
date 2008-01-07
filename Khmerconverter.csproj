@@ -7,8 +7,8 @@
     <ProjectGuid>{933F0920-EF61-4204-8496-588051DD1193}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>unicodeConvertor</RootNamespace>
-    <AssemblyName>unicodeConvertor</AssemblyName>
+    <RootNamespace>Khmerconverter</RootNamespace>
+    <AssemblyName>Khmerconverter</AssemblyName>
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\unicodeConvertor.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\Khmerconverter.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,7 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\unicodeConvertor.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\Khmerconverter.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -65,6 +65,7 @@
     <Compile Include="LegacyToUnicode.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="diagram.cd" />
     <None Include="XML\fontdata.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
