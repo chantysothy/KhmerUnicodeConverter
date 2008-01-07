@@ -1,0 +1,79 @@
+<!--
+This files provides information about the internal data structure of 
+a font data file for Khmer font converter.
+
+You can validate the xml file with this command:
+
+    xmllint fontdata.xml &hyphen;&hyphen;dtdvalid fontdata.dtd
+
+-->
+
+<!-- we need one fontdata element, this is the root of the document -->
+<!ELEMENT fontdata (fonts)>
+
+<!-- the version is usedfor future extension if the format, it should be '1.0' for now -->
+<!ATTLIST fontdata
+          version    CDATA   #REQUIRED
+          >
+
+<!-- we need at least one font element -->
+<!ELEMENT fonts (font)+>
+
+<!-- aliases element is optional but maps element not -->
+<!ELEMENT font (aliases?, maps)>
+
+<!-- the type attribute for a font is mandatory and must be an unique id
+     the default attribute can be used to set a defaulf font for this type
+     the inherit attribute allows to base this font on another
+            (you must give a type of a previous defined font)
+     the hidden attribute makes font invisible for the user 
+            (usefull for incomplete base fonts for inheritence) -->
+<!ATTLIST font
+          type    CDATA   #REQUIRED
+          default CDATA   #IMPLIED
+          inherit CDATA   #IMPLIED
+          hidden  (true|false) "false"
+          >
+
+<!-- we need at least one alias tag -->
+<!ELEMENT aliases (alias)+>
+
+<!-- an alias is an alternative name for this font 
+    you should create one alias for every know font name with this encoding -->
+<!ELEMENT alias EMPTY>
+
+<!-- a name attribute for a alias is mandatory 
+     you should create for every known fontname an alias -->
+<!ATTLIST alias
+          name CDATA #REQUIRED
+          >
+
+<!-- the maps for conversion
+    all elements are optional -->
+<!ELEMENT maps (global?, tounicode?, fromunicode?)>
+
+<!-- global mapping used for conversion in both ways 
+    one map element is mandatory -->
+<!ELEMENT global (map)+>
+
+<!-- mapping used for conversion from legacy to unicode only
+    one map element is mandatory -->
+<!ELEMENT tounicode (map)+>
+
+<!-- mapping used for conversion from unicode to legacy only
+    one map element is mandatory -->
+<!ELEMENT fromunicode (map)+>
+
+<!-- the map element is always empty but the attributes must have values
+    the legacy attribute needs codepoints as integer, either hex (e.g. "0x31") or decimal
+        more than one character is separated by ';'  (e.g. "0x45;0x65;0x33")
+    the unicode attribute must have unicode characters, you can use the xml numeric 
+        representation though (e.g. hex: "&#x1780;" or decimal: "&#1345;" )
+        do not type zwsp, coeng, zwj and zwnj but use the entity for it, (e.g. "&coeng;ក")
+-->
+<!ELEMENT map EMPTY>
+<!ATTLIST map
+          legacy CDATA #REQUIRED
+          unicode CDATA #REQUIRED
+          >
+
